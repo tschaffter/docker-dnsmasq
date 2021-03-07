@@ -3,6 +3,7 @@ LABEL maintainer="thomas.schaffter@protonmail.com"
 
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 
+# hadolint ignore=DL3008
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         dnsmasq \
