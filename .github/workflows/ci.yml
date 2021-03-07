@@ -91,10 +91,10 @@ jobs:
           org.opencontainers.image.version=${{ steps.prep.outputs.version }}
           org.opencontainers.image.revision=${{ github.sha }}
           org.opencontainers.image.licenses=${{ github.event.repository.license.name }}
-    - name: Docker Hub Description
-      if: steps.prep.outputs.push == 'true'
-      uses: peter-evans/dockerhub-description@v2
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        repository: ${{ env.docker_repository }}
+    # - name: Docker Hub Description
+    #   if: steps.prep.outputs.push == 'true'
+    #   uses: peter-evans/dockerhub-description@v2
+    #   with:
+    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    #     repository: ${{ env.docker_repository }}
