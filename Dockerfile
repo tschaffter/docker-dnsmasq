@@ -1,4 +1,4 @@
-FROM debian:10.7-slim
+FROM debian:10.8-slim
 LABEL maintainer="thomas.schaffter@protonmail.com"
 
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
