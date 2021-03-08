@@ -7,8 +7,8 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      # - SERVER=stubby#8053
-      - SERVER=8.8.8.8
+      - SERVER_HOST=8.8.8.8
+      - SERVER_PORT=53
     ports:
      - "53:53/udp"
     volumes:
