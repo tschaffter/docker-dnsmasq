@@ -96,7 +96,7 @@ cache, please read the article [How to Do DNS Caching with dnsmasq].
 
 Add the names of your local hosts and their IP addresses to
 [hosts.conf](hosts.conf). Then, use `dig` or your browser to check that the
-local domain names are properly resolved.
+local domain names and their aliases (e.g. `host1`) are properly resolved.
 
 ```console
 $ dig @localhost +noall +answer +stats host1.example.com
