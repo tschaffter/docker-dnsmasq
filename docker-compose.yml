@@ -9,9 +9,14 @@ services:
     environment:
       - SERVER_HOST=8.8.8.8
       - SERVER_PORT=53
+    networks:
+     - dns
     ports:
      - "53:53/udp"
     volumes:
       - ./dnsmasq.conf:/etc/dnsmasq.conf:ro
-      - ./dnsmasq/dnsmasq.d/example.com.conf:/etc/dnsmasq.d/example.com.conf:ro
+      - ./dnsmasq.d/example.com.conf:/etc/dnsmasq.d/example.com.conf:ro
       - ./hosts.conf:/etc/hosts.conf:ro
+
+networks:
+  dns:
