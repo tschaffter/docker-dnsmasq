@@ -24,9 +24,9 @@ jobs:
       with:
         entrypoint: hadolint
         args: Dockerfile
-    # - name: Validate docker-compose.yml
-    #   run: |
-    #     docker-compose -f docker-compose.yml config >/dev/null
+    - name: Validate docker-compose.yml
+      run: |
+        docker-compose -f docker-compose.yml config >/dev/null
 
   docker:
     needs: [lint]
