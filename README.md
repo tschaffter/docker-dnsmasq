@@ -109,6 +109,12 @@ myhost.example.com.      0       IN      A       192.168.1.10
 We can see above that the host name `myhost.example.com` has been successfully
 resolved to the local IP address `192.168.1.10`.
 
+## Versioning
+
+It is recommended to use a tag other than `latest` if you are using this image
+in a production setting. The tags of this image match the version of dnsmasq
+installed.
+
 ## License
 
 [Apache License 2.0]
