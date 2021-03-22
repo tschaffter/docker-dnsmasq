@@ -16,7 +16,6 @@ services:
     volumes:
       - ./dnsmasq.conf:/etc/dnsmasq.conf:ro
       - ./dnsmasq.d/example.com.conf:/etc/dnsmasq.d/example.com.conf:ro
-      - ./hosts.conf:/etc/hosts.conf:ro
 
 networks:
   dns:
