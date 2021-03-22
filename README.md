@@ -25,9 +25,9 @@ the global DNS.
 
 ## Usage
 
-### Set Upstream DNS Server
+### Set upstream nameserver
 
-There are two ways to specify the address of an upstream DNS server:
+There are two ways to specify the address of an upstream nameserver:
 
 - By specifying `server=` in one of Dnsmasq configuration files
   - [dnsmasq.conf](dnsmasq.conf) or
@@ -35,7 +35,7 @@ There are two ways to specify the address of an upstream DNS server:
 - By specifying the environment variables `SERVER_HOST` and `SERVER_PORT` in
   *docker-compose.yml*.
 
-Both ways can be used to specify a public DNS server like Google Public DNS
+Both ways can be used to specify a public nameserver like Google Public DNS
 (`8.8.8.8`):
 
 - `server=8.8.8.8` or
@@ -94,21 +94,26 @@ cache, please read the article [How to Do DNS Caching with dnsmasq].
 
 ## Resolving a local domain name
 
-Add the names of your local hosts and their IP addresses to
-[hosts.conf](hosts.conf). Then, use `dig` or your browser to check that the
-local domain names and their aliases (e.g. `host1`) are properly resolved.
+See example specified in
+[dnsmasq.d/example.com.conf](dnsmasq.d/example.com.conf).
 
 ```console
 $ dig @localhost +noall +answer +stats host1.example.com
-host1.example.com.      0       IN      A       192.168.1.2
+myhost.example.com.      0       IN      A       192.168.1.10
 ;; Query time: 1 msec
 ;; SERVER: 127.0.0.1#53(127.0.0.1)
 ;; WHEN: Sun Mar 07 21:53:48 PST 2021
 ;; MSG SIZE  rcvd: 62
 ```
 
-We can see above that the host name `host1.example.com` has been successfully
-resolved to the local IP address `192.168.1.2`.
+We can see above that the host name `myhost.example.com` has been successfully
+resolved to the local IP address `192.168.1.10`.
+
+## Versioning
+
+It is recommended to use a tag other than `latest` if you are using this image
+in a production setting. The tags of this image match the version of dnsmasq
+installed.
 
 ## License
 
