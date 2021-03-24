@@ -58,6 +58,7 @@ WORKDIR /
 COPY docker-entrypoint.sh .
 RUN chmod +x docker-entrypoint.sh
 
+EXPOSE 53/tcp
 EXPOSE 53/udp
 
 # HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD dig cloudflare.com A +dnssec +multiline @127.0.0.1 || exit 1
