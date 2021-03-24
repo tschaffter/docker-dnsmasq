@@ -28,7 +28,7 @@ RUN gpg --keyserver keyring.debian.org --recv-keys E19135A2 \
     && curl -OsS https://thekelleys.org.uk/dnsmasq/dnsmasq-${DNSMASQ_VERSION}.tar.gz \
     && curl -OsS https://thekelleys.org.uk/dnsmasq/dnsmasq-${DNSMASQ_VERSION}.tar.gz.asc \
     && gpg --verify dnsmasq-${DNSMASQ_VERSION}.tar.gz.asc dnsmasq-${DNSMASQ_VERSION}.tar.gz \
-    && tar -xf dnsmasq-${DNSMASQ_VERSION}.tar.gz
+    && tar -xf dnsmasq-${DNSMASQ_VERSION}.tar.gz \
     && cd dnsmasq-${DNSMASQ_VERSION} \
     && make install \
     && cp dnsmasq.conf.example /tmp
