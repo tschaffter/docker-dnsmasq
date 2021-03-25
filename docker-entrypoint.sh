@@ -20,13 +20,12 @@ if [ "$1" = 'dnsmasq' ]; then
                 server+="#${items[1]}"
             fi
             command+=("$1" "$server")
-            shift  # Remove argument name from processing
-            shift  # Remove argument value from processing
+            shift 2
             ;;
             *)
             if [[ ! -z "$1" ]]; then
                 command+=("$1")
-                shift  # Remove generic argument from processing
+                shift
             fi
             ;;
         esac
