@@ -33,7 +33,7 @@ There are three sources of configuration that you can use:
 - Domain-specific configuration(s): [dnsmasq.d/example.com.conf](dnsmasq.d/example.com.conf)
 - Command-line arguments
 
-### Set upstream nameserver
+### Set upstream nameservers
 
 Static nameservers like Cloudflare DNS servers `1.1.1.1` and `1.0.0.1` or Google
 DNS servers `8.8.8.8` and `8.8.4.4` can be specified using any sources of
