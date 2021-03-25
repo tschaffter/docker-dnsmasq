@@ -9,41 +9,48 @@ Docker image for Dnsmasq
 
 ## Overview
 
-[Dnsmasq] (short for DNS masquerade) is a lightweight, easy to configure DNS
-forwarder, designed to provide DNS (and optionally DHCP and TFTP) services to a
-small-scale network. It can serve the names of local machines which are not in
-the global DNS.
+[Dnsmasq] is a lightweight, easy to configure DNS forwarder, designed to provide
+DNS (and optionally DHCP and TFTP) services to a small-scale network. It can
+also serve the names of local machines which are not in the global DNS.If you
+own an Asus router, there is a chance that [your Asus router is using Dnsmasq].
 
 ## Features
 
-- Brings the latest release of Dnsmasq to Rapsberry Pi OS and other Debian
-  derivatives.
-- Enables Dnsmasq to resolve the hostname of an upstream server running in a
-  Docker container.
+- Brings the latest release of Dnsmasq (2.84) to Rapsberry Pi OS and other
+  Debian derivatives.
+- Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
+  Docker container (e.g. Stubby).
 - Provides a Docker image that I can trust until an official image is available
   for Dnsmasq.
 
 ## Usage
 
+### Configuration
+
+There are three sources of configuration that you can use:
+
+- Main configuration: [dnsmasq.conf](dnsmasq.conf)
+- Domain-specific configuration(s): [dnsmasq.d/example.com.conf](dnsmasq.d/example.com.conf)
+- Command-line arguments
+
 ### Set upstream nameserver
 
-There are two ways to specify the address of an upstream nameserver:
+Static nameservers like Cloudflare DNS servers `1.1.1.1` and `1.0.0.1` or Google
+DNS servers `8.8.8.8` and `8.8.4.4` can be specified using any sources of
+configuration.
 
-- By specifying `server=` in one of Dnsmasq configuration files
-  - [dnsmasq.conf](dnsmasq.conf) or
-  - [dnsmasq.d/example.com.conf](dnsmasq.d/example.com.conf)
-- By specifying the environment variables `SERVER_HOST` and `SERVER_PORT` in
-  *docker-compose.yml*.
+One of the reason for building this Docker image is because Dnsmasq cannot
+resolve the address from a nameserver that is not an IP address. This is a
+problem when using a nameserver like [Stubby] in a Docker container whose
+address is commonly referenced by its Docker service name. Stubby is a local DNS
+Privacy stub resolver that can be used in addition to Dnsmasq to enable
+DNS-over-TLS.
 
-Both ways can be used to specify a public nameserver like Google Public DNS
-(`8.8.8.8`):
-
-- `server=8.8.8.8` or
-- `SERVER_HOST=8.8.8.8` and `SERVER_PORT=53`
-
-The second method can be used to specify the service name of a dockerized DNS
-server. For example, one could use [Stubby] as a local DNS Privacy stub resolver
-that can be used in addition to Dnsmasq to enable DNS-over-TLS.
+A solution to the problem mentioned above is implemented in the entrypoint
+script [docker-entrypoint.sh](docker-entrypoint.sh) where the address specified
+for a nameserver is resolved to an IP address using the command `ping`. Thus,
+this solution only applies to server addresses specified as command-line
+arguments.
 
 ### Deploying using Docker
 
@@ -98,7 +105,7 @@ See example specified in
 [dnsmasq.d/example.com.conf](dnsmasq.d/example.com.conf).
 
 ```console
-$ dig @localhost +noall +answer +stats host1.example.com
+$ dig @localhost +noall +answer +stats myhost.example.com
 myhost.example.com.      0       IN      A       192.168.1.10
 ;; Query time: 1 msec
 ;; SERVER: 127.0.0.1#53(127.0.0.1)
@@ -122,6 +129,7 @@ installed.
 <!-- Links -->
 
 [Dnsmasq]: https://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary
+[your Asus router is using Dnsmasq]: https://unfinishedbitness.info/2015/05/26/asuswrt-finalized-setup/
 [Stubby]: https://github.com/getdnsapi/stubby
 [Dig]: https://en.wikipedia.org/wiki/Dig_(command)
 
