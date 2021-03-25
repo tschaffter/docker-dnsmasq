@@ -33,6 +33,11 @@ There are three sources of configuration that you can use:
 - Domain-specific configuration(s): [dnsmasq.d/example.com.conf](dnsmasq.d/example.com.conf)
 - Command-line arguments
 
+The file [dnsmasq.conf.example](dnsmasq.conf.example) is the default main
+configuration file provided with the latest release of Dnsmasq available in this
+GitHub repository. The file [dnsmasq.conf](dnsmasq.conf) highlights some options
+of Dnsmasq.
+
 ### Set upstream nameservers
 
 Static nameservers like Cloudflare DNS servers `1.1.1.1` and `1.0.0.1` or Google
