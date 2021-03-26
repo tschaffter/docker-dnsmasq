@@ -19,14 +19,21 @@ jobs:
           cd dnsmasq
           new_version=$(git describe --tags --abbrev=0)
           new_version=${new_version:1}  # remove the prefix 'v'
+          stable_release=true
+          case $dnsmasq_version in
+            *rc*|*test*) stable_release=false;;
+          esac
           echo "NEW_VERSION=$(echo $new_version)" >> $GITHUB_ENV
+          echo "STABLE_RELEASE=$(echo $stable_release)" >> $GITHUB_ENV
 
       - name: Update Docker image version
+        if: env.STABLE_RELEASE == 'true'
         run: |
           current_version=$(cat VERSION)
           echo ${{ env.NEW_VERSION }} > VERSION
 
       - name: Send pull request to update to new version
+        if: env.STABLE_RELEASE == 'true'
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: Update to ${{ env.NEW_VERSION }}
