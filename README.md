@@ -16,9 +16,9 @@ own an Asus router, there is a chance that [your Asus router is using Dnsmasq].
 
 ## Features
 
-- Brings the latest release of Dnsmasq (2.84) to Rapsberry Pi OS and other
-  Debian derivatives. A Pull Request that updates this GitHub repository is
-  automatically created when a new version of Dnsmasq is available (see
+- Brings the latest release of Dnsmasq to any host that has Docker installed. A
+  Pull Request that updates this GitHub repository is automatically created when
+  a new version of Dnsmasq is available (see
   [update.yml](.github/workflows/update.yml)).
 - Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
   Docker container (e.g. Stubby).
