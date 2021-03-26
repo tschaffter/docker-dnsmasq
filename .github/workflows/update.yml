@@ -3,7 +3,7 @@ name: Update Dnsmasq release
 on:
   schedule:
     - cron: '0 0 * * 0'  # At 00:00 every Sunday
-  pull_request:
+  # pull_request:
 
 jobs:
   check-and-update:
@@ -18,7 +18,8 @@ jobs:
           git clone git://thekelleys.org.uk/dnsmasq.git
           cd dnsmasq
           new_version=$(git describe --tags --abbrev=0)
-          new_version=${new_version:1}  # remove the prefix 'v'
+          # Trim leading 'v' in semantic version
+          new_version=${new_version:1}
           stable_release=true
           case $new_version in
             *rc*|*test*) stable_release=false;;
@@ -27,10 +28,12 @@ jobs:
           echo "STABLE_RELEASE=$(echo $stable_release)" >> $GITHUB_ENV
 
       - name: Update Docker image version
-        if: env.STABLE_RELEASE == 'true'
+        # if: env.STABLE_RELEASE == 'true'
         run: |
           current_version=$(cat VERSION)
-          echo ${{ env.NEW_VERSION }} > VERSION
+          for f in VERSION Dockerfile docker-compose.yml; do
+            sed -i "s/${current_version}/${{env.NEW_VERSION}}/g" "$f"
+          done
 
       - name: Send pull request to update to new version
         if: env.STABLE_RELEASE == 'true'
@@ -39,28 +42,3 @@ jobs:
           commit-message: Update to ${{ env.NEW_VERSION }}
           title: Update to ${{ env.NEW_VERSION }}
           delete-branch: true
-
-
-
-
-      # - name: Update stack version
-      #   run: |
-      #     source .env
-      #     cur_ver="$ELK_VERSION"
-      #     new_ver=${{ fromJson(steps.get_latest_release.outputs.data).tag_name }}
-
-      #     # Escape dot characters so sed interprets them as literal dots
-      #     cur_ver="$(echo $cur_ver | sed 's/\./\\./g')"
-      #     # Trim leading 'v' in semantic version
-      #     new_ver="${new_ver:1}"
-
-      #     for f in .env docker-stack.yml README.md; do
-      #       sed -i "s/${cur_ver}/${new_ver}/g" "$f"
-      #     done
-
-      # - name: Send pull request to update to new version
-      #   uses: peter-evans/create-pull-request@v3
-      #   with:
-      #     commit-message: Update to ${{ fromJson(steps.get_latest_release.outputs.data).tag_name }}
-      #     title: Update to ${{ fromJson(steps.get_latest_release.outputs.data).tag_name }}
-      #     delete-branch: true
