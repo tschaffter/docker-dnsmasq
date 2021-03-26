@@ -40,8 +40,7 @@ RUN gpg --keyserver keyring.debian.org --recv-keys E19135A2 \
     && git checkout tags/v${DNSMASQ_VERSION} \
     # Checking the signature of the latest commit because the tags are not signed.
     && git log -n 1 --pretty=format:%G? | grep "U" || { echo "Invalid commit signature"; exit 1; } \
-    && make install \
-    && cp dnsmasq.conf.example /tmp
+    && make install
 
 FROM debian:10.8-slim
 
@@ -60,7 +59,7 @@ RUN apt-get update \
 WORKDIR /opt/dnsmasq
 
 COPY --from=dnsmasq /usr/local/sbin/dnsmasq /usr/local/sbin/dnsmasq
-COPY --from=dnsmasq /tmp/dnsmasq.conf.example .
+COPY --from=dnsmasq /tmp/dnsmasq/dnsmasq.conf.example .
 RUN adduser --system --no-create-home dnsmasq
 
 WORKDIR /
