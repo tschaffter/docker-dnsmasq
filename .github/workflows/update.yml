@@ -1,4 +1,4 @@
-name: Update Dnsmasq release
+name: Update project release
 
 on:
   schedule:
