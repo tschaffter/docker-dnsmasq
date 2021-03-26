@@ -1,5 +1,4 @@
 FROM debian:10.8-slim as dnsmasq
-LABEL maintainer="Thomas Schaffter"
 
 ARG DNSMASQ_VERSION="2.84"
 ENV DNSMASQ_VERSION=${DNSMASQ_VERSION}
@@ -45,7 +44,6 @@ RUN gpg --keyserver keyring.debian.org --recv-keys E19135A2 \
     && cp dnsmasq.conf.example /tmp
 
 FROM debian:10.8-slim
-LABEL maintainer="Thomas Schaffter"
 
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 
