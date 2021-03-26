@@ -19,10 +19,9 @@ jobs:
           dnsmasq_version=$(git describe --tags --abbrev=0)
           dnsmasq_version=${dnsmasq_version:1}  # remove the prefix 'v'
           echo "DNSMASQ_VERSION=$(echo $dnsmasq_version)" >> $GITHUB_ENV
-
       - name: Update Docker image version
         run: |
-          current_version=$(git describe --tags --abbrev=0)
+          current_version=$(cat VERSION)
           new_version=${{ env.DNSMASQ_VERSION }}
           echo "Current version: $current_version"
           echo "New version: $new_version"
