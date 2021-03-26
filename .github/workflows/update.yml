@@ -12,14 +12,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Get latest Dnsmasq release version
         run: |
           git clone git://thekelleys.org.uk/dnsmasq.git
           cd dnsmasq
           dnsmasq_version=$(git describe --tags --abbrev=0)
           dnsmasq_version=${dnsmasq_version:1}  # remove the prefix 'v'
+          stable_release=true
+          case $dnsmasq_version in
+            *rc*|*test*)
+              stable_release=false
+              ;;
+          esac
           echo "DNSMASQ_VERSION=$(echo $dnsmasq_version)" >> $GITHUB_ENV
+          echo "STABLE_RELEASE=$(echo $stable_release)" >> $GITHUB_ENV
+
       - name: Update Docker image version
+        if: env.STABLE_RELEASE == 'true'
         run: |
           current_version=$(cat VERSION)
           new_version=${{ env.DNSMASQ_VERSION }}
