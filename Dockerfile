@@ -39,6 +39,7 @@ RUN gpg --keyserver keyring.debian.org --recv-keys E19135A2 \
     && git clone https://thekelleys.org.uk/git/dnsmasq.git dnsmasq \
     && cd dnsmasq \
     && git checkout tags/v${DNSMASQ_VERSION} \
+    # Checking the signature of the latest commit because the tags are not signed.
     && git log -n 1 --pretty=format:%G? | grep "U" || { echo "Invalid commit signature"; exit 1; } \
     && make install \
     && cp dnsmasq.conf.example /tmp
