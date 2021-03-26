@@ -2,8 +2,8 @@ name: Update Dnsmasq release
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # At 00:00 every Sunday
-  # pull_request:
+    - cron: '0 10 * * 0'  # every Sunday at 10am
+  pull_request:
 
 jobs:
   check-and-update:
