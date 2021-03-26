@@ -11,8 +11,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         build-essential \
         ca-certificates \
-        curl \
         dirmngr \
+        git \
         gpg \
         gpg-agent \
     && rm -rf \
@@ -24,12 +24,23 @@ WORKDIR /tmp
 
 # Simon Kelley public key can be found on https://db.debian.org/search.cgi
 # hadolint ignore=DL3003
+# RUN gpg --keyserver keyring.debian.org --recv-keys E19135A2 \
+#     && curl -OsS https://thekelleys.org.uk/dnsmasq/dnsmasq-${DNSMASQ_VERSION}.tar.gz \
+#     && curl -OsS https://thekelleys.org.uk/dnsmasq/dnsmasq-${DNSMASQ_VERSION}.tar.gz.asc \
+#     && gpg --verify dnsmasq-${DNSMASQ_VERSION}.tar.gz.asc dnsmasq-${DNSMASQ_VERSION}.tar.gz \
+#     && tar -xf dnsmasq-${DNSMASQ_VERSION}.tar.gz \
+#     && cd dnsmasq-${DNSMASQ_VERSION} \
+#     && make install \
+#     && cp dnsmasq.conf.example /tmp
+
+# Simon Kelley public key can be found on https://db.debian.org/search.cgi
+# hadolint ignore=DL3003
 RUN gpg --keyserver keyring.debian.org --recv-keys E19135A2 \
-    && curl -OsS https://thekelleys.org.uk/dnsmasq/dnsmasq-${DNSMASQ_VERSION}.tar.gz \
-    && curl -OsS https://thekelleys.org.uk/dnsmasq/dnsmasq-${DNSMASQ_VERSION}.tar.gz.asc \
-    && gpg --verify dnsmasq-${DNSMASQ_VERSION}.tar.gz.asc dnsmasq-${DNSMASQ_VERSION}.tar.gz \
-    && tar -xf dnsmasq-${DNSMASQ_VERSION}.tar.gz \
-    && cd dnsmasq-${DNSMASQ_VERSION} \
+    && git clone https://thekelleys.org.uk/git/dnsmasq.git dnsmasq \
+    && cd dnsmasq \
+    && git checkout tags/v${DNSMASQ_VERSION} \
+    # Checking the signature of the latest commit because the tags are not signed.
+    && git log -n 1 --pretty=format:%G? | grep "U" || { echo "Invalid commit signature"; exit 1; } \
     && make install \
     && cp dnsmasq.conf.example /tmp
 
