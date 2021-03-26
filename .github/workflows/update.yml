@@ -20,7 +20,7 @@ jobs:
           new_version=$(git describe --tags --abbrev=0)
           new_version=${new_version:1}  # remove the prefix 'v'
           stable_release=true
-          case $dnsmasq_version in
+          case $new_version in
             *rc*|*test*) stable_release=false;;
           esac
           echo "NEW_VERSION=$(echo $new_version)" >> $GITHUB_ENV
