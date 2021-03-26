@@ -3,7 +3,6 @@ name: Update Dnsmasq release
 on:
   schedule:
     - cron: '0 10 * * 0'  # every Sunday at 10am
-  pull_request:
 
 jobs:
   check-and-update:
@@ -28,7 +27,7 @@ jobs:
           echo "STABLE_RELEASE=$(echo $stable_release)" >> $GITHUB_ENV
 
       - name: Update Docker image version
-        # if: env.STABLE_RELEASE == 'true'
+        if: env.STABLE_RELEASE == 'true'
         run: |
           current_version=$(cat VERSION)
           for f in VERSION Dockerfile docker-compose.yml; do
