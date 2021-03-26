@@ -12,23 +12,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Get latest release version
+      - name: Get latest Dnsmasq release version
         run: |
           git clone git://thekelleys.org.uk/dnsmasq.git
           cd dnsmasq
-          latest_version=$(git describe --tags --abbrev=0)
-          latest_version=${latest_version:1}  # remove the prefix 'v'
-          echo ${latest_version}
+          dnsmasq_version=$(git describe --tags --abbrev=0)
+          dnsmasq_version=${dnsmasq_version:1}  # remove the prefix 'v'
+          echo "DNSMASQ_VERSION=$(echo $dnsmasq_version)" >> $GITHUB_ENV
 
-
-      # - name: Get latest release version
-      #   uses: octokit/request-action@v2.x
-      #   id: get_latest_release
-      #   with:
-      #     route: GET /repos/:repository/releases/latest
-      #     repository:  elastic/elasticsearch
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update Docker image version
+        run: |
+          current_version=$(git describe --tags --abbrev=0)
+          new_version=${{ env.DNSMASQ_VERSION }}
+          echo "Current version: $current_version"
+          echo "New version: $new_version"
 
       # - name: Update stack version
       #   run: |
