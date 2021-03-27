@@ -14,16 +14,16 @@ DNS (and optionally DHCP and TFTP) services to a small-scale network. It can
 also serve the names of local machines which are not in the global DNS.If you
 own an Asus router, there is a chance that [your Asus router is using Dnsmasq].
 
-## Features
+## Motivation
 
-- Brings the latest release of Dnsmasq to any host that has Docker installed. A
-  Pull Request that updates this GitHub repository is automatically created when
-  a new version of Dnsmasq is available (see
-  [update.yml](.github/workflows/update.yml)).
-- Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
-  Docker container (e.g. Stubby).
-- Provides a Docker image that I can trust until an official image is available
-  for Dnsmasq.
+- This repository brings the latest release of Dnsmasq to any host that has
+  Docker installed.
+- This repository closely tracks upstream source changes and promptly publishes
+  new versions of this image using an automated system (GitHub workflow).
+- This Docker image enables Dnsmasq to resolve the hostname of an upstream nameserver
+  running in a Docker container (e.g. Stubby).
+- This repository provides a Docker image that I can trust until an official
+  image is available for Dnsmasq.
 
 ## Usage
 
@@ -124,6 +124,12 @@ We can see above that the host name `myhost.example.com` has been successfully
 resolved to the local IP address `192.168.1.10`.
 
 ## Versioning
+
+### Docker tags
+
+You should avoid using the `:latest` tag when deploying containers in
+production, because this makes it hard to track which version of the image is
+running and hard to roll back.
 
 It is recommended to use a tag other than `latest` if you are using this image
 in a production setting. The tags of this image match the versions of Dnsmasq
