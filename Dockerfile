@@ -35,7 +35,7 @@ WORKDIR /tmp
 # Simon Kelley public key can be found on https://db.debian.org/search.cgi
 # hadolint ignore=DL3003
 RUN gpg --keyserver keyring.debian.org --recv-keys E19135A2 \
-    && git clone https://thekelleys.org.uk/git/dnsmasq.git dnsmasq \
+    && git clone https://thekelleys.org.uk/git/dnsmasq.git \
     && cd dnsmasq \
     && git checkout tags/v${DNSMASQ_VERSION} \
     # Checking the signature of the latest commit because the tags are not signed.

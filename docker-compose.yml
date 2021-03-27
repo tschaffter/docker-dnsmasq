@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   dnsmasq:
-    image: tschaffter/dnsmasq:2.80
+    image: tschaffter/dnsmasq:2.84
     build:
       context: .
       dockerfile: Dockerfile
