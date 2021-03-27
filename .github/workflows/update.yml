@@ -18,6 +18,8 @@ jobs:
           # Trim leading 'v' in semantic version
           new_version=${new_version:1}
           echo "NEW_VERSION=$(echo $new_version)" >> $GITHUB_ENV
+          # Use this opportunity to update the dnsmasq config example
+          cp dnsmasq.conf.example ../dnsmasq.conf.example
       - name: Update Docker image version
         run: |
           current_version=$(cat VERSION)
