@@ -72,7 +72,7 @@ in detached mode, you will only need to enter `docker-compose down`.
 ## Resolving domain names
 
 [Dig] is a command line utility that performs DNS lookup by querying name
-servers and displaying the result to you. After starting dnsmasq, run the
+servers and displaying the result to you. After starting Dnsmasq, run the
 command below to resolve the IP address of github.com.
 
 ```console
@@ -101,9 +101,9 @@ github.com.             59      IN      A       192.30.255.113
 ;; MSG SIZE  rcvd: 55
 ```
 
-This time the query time is 0 msec because dnsmasq cached the information after
+This time the query time is 0 msec because Dnsmasq cached the information after
 the first lookup, and all subsequent lookups don't take any time because they
-are served from the cache. For more information on how to configure dnsmasq
+are served from the cache. For more information on how to configure Dnsmasq
 cache, please read the article [How to Do DNS Caching with dnsmasq].
 
 ## Resolving a local domain name
@@ -126,7 +126,7 @@ resolved to the local IP address `192.168.1.10`.
 ## Versioning
 
 It is recommended to use a tag other than `latest` if you are using this image
-in a production setting. The tags of this image match the versions of dnsmasq
+in a production setting. The tags of this image match the versions of Dnsmasq
 installed.
 
 ## License
