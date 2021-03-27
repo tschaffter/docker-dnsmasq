@@ -127,7 +127,7 @@ resolved to the local IP address `192.168.1.10`.
 
 ### Docker tags
 
-You should avoid using the `:latest` tag when deploying containers in
+You should avoid using the `latest` tag when deploying containers in
 production, because this makes it hard to track which version of the image is
 running and hard to roll back.
 
