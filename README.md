@@ -126,7 +126,7 @@ resolved to the local IP address `192.168.1.10`.
 ## Versioning
 
 It is recommended to use a tag other than `latest` if you are using this image
-in a production setting. The tags of this image match the version of dnsmasq
+in a production setting. The tags of this image match the versions of dnsmasq
 installed.
 
 ## License
@@ -142,4 +142,4 @@ installed.
 
 [Stubby server]: https://github.com/tschaffter/stubby
 [How to Do DNS Caching with dnsmasq]: https://netbeez.net/blog/linux-dns-caching-dnsmasq/
-[Apache License 2.0]: https://github.com/nlpsandbox/date-annotator-example/blob/main/LICENSE
+[Apache License 2.0]: https://github.com/tschaffter/dnsmasq/blob/main/LICENSE

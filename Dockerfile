@@ -39,7 +39,7 @@ RUN gpg --keyserver keyring.debian.org --recv-keys E19135A2 \
     && cd dnsmasq \
     && git checkout tags/v${DNSMASQ_VERSION} \
     # Checking the signature of the latest commit because the tags are not signed.
-    && git log -n 1 --pretty=format:%G? | grep "U" || { echo "Invalid commit signature"; exit 1; } \
+    && git log -n 1 --pretty=format:%G? | grep "U" \
     && make install
 
 FROM debian:10.8-slim
@@ -56,10 +56,9 @@ RUN apt-get update \
         /var/tmp/* \
         /var/lib/apt/lists/*
 
-WORKDIR /opt/dnsmasq
-
 COPY --from=dnsmasq /usr/local/sbin/dnsmasq /usr/local/sbin/dnsmasq
-COPY --from=dnsmasq /tmp/dnsmasq/dnsmasq.conf.example .
+COPY --from=dnsmasq /tmp/dnsmasq/dnsmasq.conf.example /etc/dnsmasq.conf
+
 RUN adduser --system --no-create-home dnsmasq
 
 WORKDIR /
@@ -69,7 +68,7 @@ RUN chmod +x docker-entrypoint.sh
 EXPOSE 53/tcp
 EXPOSE 53/udp
 
-# HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD dig cloudflare.com A +dnssec +multiline @127.0.0.1 || exit 1
+# HEALTHCHECK CMD dig cloudflare.com A +dnssec +multiline @127.0.0.1 || exit 1
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["dnsmasq", "-k"]
