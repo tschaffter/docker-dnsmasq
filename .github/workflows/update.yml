@@ -22,8 +22,8 @@ jobs:
           cp dnsmasq.conf.example ../dnsmasq.conf.example
       - name: Update Docker image version
         run: |
-          current_version=$(cat VERSION)
-          for f in VERSION Dockerfile docker-compose.yml; do
+          current_version=$(cat DNSMASQ_VERSION)
+          for f in DNSMASQ_VERSION Dockerfile docker-compose.yml; do
             sed -i "s/${current_version}/${{env.NEW_VERSION}}/g" "$f"
           done
       - name: Send pull request to update to new version
