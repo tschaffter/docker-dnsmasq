@@ -31,6 +31,6 @@ jobs:
       - name: Send pull request to update to new version
         uses: peter-evans/create-pull-request@v3
         with:
-          commit-message: Update to ${{ env.NEW_VERSION }}
-          title: Update to ${{ env.NEW_VERSION }}
+          commit-message: Update to Dnsmasq ${{ env.NEW_VERSION }}
+          title: Update to Dnsmasq ${{ env.NEW_VERSION }}
           delete-branch: true
