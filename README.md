@@ -125,15 +125,37 @@ resolved to the local IP address `192.168.1.10`.
 
 ## Versioning
 
+### GitHub tags
+
+This repository uses [semantic versioning] to track the releases of this
+project. This project uses "non-moving" GitHub tags, that is, a tag will always
+point to the same git commit id.
+
 ### Docker tags
 
-You should avoid using the `latest` tag when deploying containers in
+The artifact published by this repository is a Docker image. Here, the version
+of the image is aligned with the version of Dnsmasq, not the release versions of
+this GitHub repository. The motivation behind this strategy is that the image
+tag informs the user on the version of Dnsmasq used.
+
+The table below describes the image tags created and whether they are moving
+tags.
+
+| Tag name   | Moving   | Description  |
+|---|---|---|
+| `latest`  | Yes   | Latest stable release   |
+| `edge`  | Yes   | Lastest commit made to the default branch  |
+| `<major>` | Yes   | Latest stable release for the Dnsmasq major version `<major>` |
+| `<major>.<minor>` | Yes | Latest stable release for the Dnsmasq version `<major>.<minor>` |
+| `<major>.<minor>-<sha>` | No | Same as above but with the reference to the git commit |
+
+You should avoid using a moving tag like `latest` when deploying containers in
 production, because this makes it hard to track which version of the image is
 running and hard to roll back.
 
-It is recommended to use a tag other than `latest` if you are using this image
-in a production setting. The tags of this image match the versions of Dnsmasq
-installed.
+If you prefer to use the latest version available without manually updating your
+configuration and reproducibility is secondary, then it is fine to use a moving
+tag.
 
 ## License
 
@@ -145,7 +167,7 @@ installed.
 [your Asus router is using Dnsmasq]: https://unfinishedbitness.info/2015/05/26/asuswrt-finalized-setup/
 [Stubby]: https://github.com/getdnsapi/stubby
 [Dig]: https://en.wikipedia.org/wiki/Dig_(command)
-
+[semantic versioning]: https://semver.org/
 [Stubby server]: https://github.com/tschaffter/stubby
 [How to Do DNS Caching with dnsmasq]: https://netbeez.net/blog/linux-dns-caching-dnsmasq/
 [Apache License 2.0]: https://github.com/tschaffter/dnsmasq/blob/main/LICENSE
