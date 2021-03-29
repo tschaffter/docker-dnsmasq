@@ -12,7 +12,7 @@ Docker image for Dnsmasq
 [Dnsmasq] is a lightweight, easy to configure DNS forwarder, designed to provide
 DNS (and optionally DHCP and TFTP) services to a small-scale network. It can
 also serve the names of local machines which are not in the global DNS.If you
-own an Asus router, there is a chance that [your Asus router is using Dnsmasq].
+own an Asus router, it is possible that [your Asus router is using Dnsmasq].
 
 ## Motivation
 
