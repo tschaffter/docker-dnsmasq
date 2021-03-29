@@ -128,18 +128,17 @@ resolved to the local IP address `192.168.1.10`.
 ### GitHub tags
 
 This repository uses [semantic versioning] to track the releases of this
-project. This project uses "non-moving" GitHub tags, that is, a tag will always
-point to the same git commit id.
+project. This repository uses "non-moving" GitHub tags, that is, a tag will
+always point to the same git commit identifier once it has been created.
 
 ### Docker tags
 
-The artifact published by this repository is a Docker image. Here, the version
-of the image is aligned with the version of Dnsmasq, not the release versions of
-this GitHub repository. The motivation behind this strategy is that the image
-tag informs the user on the version of Dnsmasq used.
+The artifact published by this repository is a Docker image. The version of the
+image is aligned with the version of Dnsmasq, not the release versions of this
+GitHub repository. The motivation behind this strategy is that the tag directly
+informs the user on the version of Dnsmasq that is being deployed.
 
-The table below describes the image tags created and whether they are moving
-tags.
+The table below describes the image tags available.
 
 | Tag name   | Moving   | Description  |
 |---|---|---|
