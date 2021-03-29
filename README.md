@@ -20,10 +20,8 @@ own an Asus router, it is possible that [your Asus router is using Dnsmasq].
   Docker installed.
 - This repository closely tracks upstream source changes and promptly publishes
   new versions of this image using an automated system (GitHub workflow).
-- This Docker image enables Dnsmasq to resolve the hostname of an upstream nameserver
-  running in a Docker container (e.g. Stubby).
-- This repository provides a Docker image that I can trust until an official
-  image is available for Dnsmasq.
+- This Docker image enables Dnsmasq to resolve the hostname of an upstream
+  nameserver running in a Docker container (e.g. Stubby).
 
 ## Usage
 
