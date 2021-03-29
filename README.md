@@ -150,11 +150,9 @@ The table below describes the image tags available.
 
 You should avoid using a moving tag like `latest` when deploying containers in
 production, because this makes it hard to track which version of the image is
-running and hard to roll back.
-
-If you prefer to use the latest version available without manually updating your
-configuration and reproducibility is secondary, then it makes sense to use a
-moving tag.
+running and hard to roll back. If you prefer to use the latest version available
+without manually updating your configuration and reproducibility is secondary,
+then it makes sense to use a moving tag.
 
 ## License
 
