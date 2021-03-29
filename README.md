@@ -154,8 +154,8 @@ production, because this makes it hard to track which version of the image is
 running and hard to roll back.
 
 If you prefer to use the latest version available without manually updating your
-configuration and reproducibility is secondary, then it is fine to use a moving
-tag.
+configuration and reproducibility is secondary, then it makes sense to use a
+moving tag.
 
 ## License
 
