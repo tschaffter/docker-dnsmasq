@@ -85,7 +85,7 @@ github.com.             59      IN      A       192.30.255.113
 The response includes the following information:
 
 - The IP address of github.com is 192.30.255.113.
-- The server that returned the result is 127.0.0.1#53 (dnsmasq).
+- The response is returned by the server is 127.0.0.1#53 (dnsmasq).
 - The query took 24 msec to complete.
 
 Let's run the same command a second time:
