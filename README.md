@@ -131,10 +131,10 @@ always point to the same git commit identifier once it has been created.
 
 ### Docker tags
 
-The artifact published by this repository is a Docker image. The version of the
-image is aligned with the version of Dnsmasq, not the release versions of this
-GitHub repository. The motivation behind this strategy is that the tag directly
-informs the user on the version of Dnsmasq that is being deployed.
+The artifact published by this repository is a Docker image. The versions of the
+image are aligned with the versions of Dnsmasq, not the GitHub tags of this
+repository. The motivation behind this strategy is that the tag directly informs
+the user on the version of Dnsmasq that is being deployed.
 
 The table below describes the image tags available.
 
