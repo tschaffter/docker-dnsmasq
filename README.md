@@ -14,14 +14,16 @@ DNS (and optionally DHCP and TFTP) services to a small-scale network. It can
 also serve the names of local machines which are not in the global DNS.If you
 own an Asus router, it is possible that [your Asus router is using Dnsmasq].
 
-## Motivation
+## Features
 
-- This repository brings the latest release of Dnsmasq to any host that has
-  Docker installed.
-- This repository closely tracks upstream source changes and promptly publishes
-  new versions of this image using an automated system (GitHub workflow).
-- This Docker image enables Dnsmasq to resolve the hostname of an upstream
-  nameserver running in a Docker container (e.g. Stubby).
+This repository:
+
+- Brings the latest release of Dnsmasq to any host that has Docker installed.
+- Closely tracks upstream source changes and promptly publishes new versions of
+  this image using an automated system (GitHub workflow).
+- Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
+  Docker container (e.g. [tschaffter/getdns-stubby]), which is not (yet?)
+  supported natively by Dnsmasq.
 
 ## Usage
 
@@ -30,7 +32,8 @@ own an Asus router, it is possible that [your Asus router is using Dnsmasq].
 There are three sources of configuration that you can use:
 
 - Main configuration: [dnsmasq.conf](dnsmasq.conf)
-- Domain-specific configuration(s): [dnsmasq.d/example.com.conf](dnsmasq.d/example.com.conf)
+- Domain-specific configuration(s):
+  [dnsmasq.d/example.com.conf](dnsmasq.d/example.com.conf)
 - Command-line arguments
 
 The file [dnsmasq.conf.example](dnsmasq.conf.example) is the default main
@@ -84,7 +87,7 @@ github.com.             59      IN      A       192.30.255.113
 
 The response includes the following information:
 
-- The IP address of github.com is 192.30.255.113.
+- The IP address of github.com is 192.30.255.113 (may change over time).
 - The response is returned by the server is 127.0.0.1#53 (dnsmasq).
 - The query took 24 msec to complete.
 
@@ -163,6 +166,6 @@ then it makes sense to use a moving tag.
 [Stubby]: https://github.com/getdnsapi/stubby
 [Dig]: https://en.wikipedia.org/wiki/Dig_(command)
 [semantic versioning]: https://semver.org/
-[Stubby server]: https://github.com/tschaffter/stubby
+[tschaffter/getdns-stubby]: https://github.com/tschaffter/getdns-stubby
 [How to Do DNS Caching with dnsmasq]: https://netbeez.net/blog/linux-dns-caching-dnsmasq/
 [Apache License 2.0]: https://github.com/tschaffter/dnsmasq/blob/main/LICENSE
