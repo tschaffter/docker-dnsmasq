@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Get latest Dnsmasq release version
         run: |
           git clone git://thekelleys.org.uk/dnsmasq.git
