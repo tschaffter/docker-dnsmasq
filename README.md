@@ -130,7 +130,7 @@ resolved to the local IP address `192.168.1.10`.
 
 This repository uses [semantic versioning] to track the releases of this
 project. This repository uses "non-moving" GitHub tags, that is, a tag will
-always point to the same git commit identifier once it has been created.
+always point to the same git commit once it has been created.
 
 ### Docker tags
 
