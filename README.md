@@ -2,7 +2,7 @@
 
 [![GitHub Release](https://img.shields.io/github/release/tschaffter/dnsmasq.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/dnsmasq/releases)
 [![GitHub CI](https://img.shields.io/github/workflow/status/tschaffter/dnsmasq/CI.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/dnsmasq/actions)
-[![GitHub License](https://img.shields.io/github/license/tschaffter/dnsmasq.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/dnsmasq/blob/develop/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/tschaffter/dnsmasq.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/dnsmasq/blob/main/LICENSE)
 [![Docker Pulls](https://img.shields.io/docker/pulls/tschaffter/dnsmasq.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/tschaffter/dnsmasq)
 
 
@@ -24,6 +24,18 @@ This repository:
 - Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
   Docker container (e.g. [tschaffter/getdns-stubby]), which is not (yet?)
   supported natively by Dnsmasq.
+
+
+## Specification
+
+- Dnsmasq version: 2.85
+- Project version: 1.2.1
+- Docker image: [tschaffter/dnsmasq]
+
+
+## Requirements
+
+- [Docker Engine] >=19.03.0
 
 
 ## Usage
@@ -66,10 +78,12 @@ arguments.
 Start the Dnsmasq server. Add the option `-d` or `--detach` to run in the
 background.
 
-    docker-compose up --build
+```console
+docker compose up
+```
 
-To stop the server, enter `Ctrl+C` followed by `docker-compose down`. If running
-in detached mode, you will only need to enter `docker-compose down`.
+To stop the server, enter `Ctrl+C` followed by `docker compose down`. If running
+in detached mode, you will only need to enter `docker compose down`.
 
 
 ## Resolving domain names
@@ -169,6 +183,7 @@ then it makes sense to use a moving tag.
 [Dnsmasq]: https://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary
 [your Asus router is using Dnsmasq]: https://unfinishedbitness.info/2015/05/26/asuswrt-finalized-setup/
 [Stubby]: https://github.com/getdnsapi/stubby
+[tschaffter/dnsmasq]: https://hub.docker.com/repository/docker/tschaffter/dnsmasq
 [Dig]: https://en.wikipedia.org/wiki/Dig_(command)
 [semantic versioning]: https://semver.org/
 [tschaffter/getdns-stubby]: https://github.com/tschaffter/getdns-stubby
