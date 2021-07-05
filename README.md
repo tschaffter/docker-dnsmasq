@@ -6,7 +6,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/tschaffter/dnsmasq.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/tschaffter/dnsmasq)
 
 
-## Overview
+## Introduction
 
 [Dnsmasq] is a lightweight, easy to configure DNS forwarder, designed to provide
 DNS (and optionally DHCP and TFTP) services to a small-scale network. It can

@@ -108,8 +108,8 @@ jobs:
         context: .
         file: Dockerfile
         platforms: linux/amd64,linux/arm/v7,linux/arm64
-        push: ${{ steps.prep.outputs.push }}
-        tags: ${{ steps.prep.outputs.tags }}
+        push: ${{ env.push }}
+        tags: ${{ env.tags }}
         labels: |
           org.opencontainers.image.created=${{ env.created }}
           org.opencontainers.image.source=${{ github.repositoryUrl }}
