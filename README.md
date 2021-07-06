@@ -19,7 +19,7 @@ own an Asus router, it is possible that [your Asus router is using Dnsmasq].
 This GitHub repository
 
 - Brings the latest release of Dnsmasq to any hosts that have Docker installed.
-- Tracks new release of Dnsmasq and promptly publishes new versions of this
+- Tracks new releases of Dnsmasq and promptly publishes new versions of this
   Docker image using a GitHub workflow.
 - Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
   Docker container using the option `--server <docker_service_name>` (e.g.
