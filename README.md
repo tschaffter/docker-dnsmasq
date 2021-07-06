@@ -54,7 +54,7 @@ configuration file provided with the latest release of Dnsmasq available in this
 GitHub repository. The file [dnsmasq.conf](dnsmasq.conf) highlights some options
 of Dnsmasq.
 
-### Set upstream nameservers
+### Setting upstream nameservers
 
 Static nameservers like Cloudflare DNS servers `1.1.1.1` and `1.0.0.1` or Google
 DNS servers `8.8.8.8` and `8.8.4.4` can be specified using any sources of
