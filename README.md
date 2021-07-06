@@ -22,7 +22,7 @@ This GitHub repository
 - Tracks new release of Dnsmasq and promptly publishes new versions of this
   Docker image using a GitHub workflow.
 - Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
-  Docker container using the option `--server <docker_server>` (e.g.
+  Docker container using the option `--server <docker_service_name>` (e.g.
   [tschaffter/getdns-stubby]), which is not supported natively by Dnsmasq.
 
 
@@ -63,15 +63,12 @@ configuration.
 One of the reason for building this Docker image is because Dnsmasq cannot
 resolve the address from a nameserver that is not an IP address. This is a
 problem when using a nameserver like [Stubby] in a Docker container whose
-address is commonly referenced by its Docker service name. Stubby is a local DNS
+address is commonly referenced by its Docker service name (Stubby is a local DNS
 Privacy stub resolver that can be used in addition to Dnsmasq to enable
-DNS-over-TLS.
-
-A solution to the problem mentioned above is implemented in the entrypoint
+DNS-over-TLS). A solution to this problem is implemented in the entrypoint
 script [docker-entrypoint.sh](docker-entrypoint.sh) where the address specified
-for a nameserver is resolved to an IP address using the command `ping`. Thus,
-this solution only applies to server addresses specified as command-line
-arguments.
+for a nameserver is resolved to an IP address using the command `ping`. This
+solution only applies to server addresses specified as command-line arguments.
 
 ### Deploying using Docker
 
@@ -184,6 +181,7 @@ then it makes sense to use a moving tag.
 [your Asus router is using Dnsmasq]: https://unfinishedbitness.info/2015/05/26/asuswrt-finalized-setup/
 [Stubby]: https://github.com/getdnsapi/stubby
 [tschaffter/dnsmasq]: https://hub.docker.com/repository/docker/tschaffter/dnsmasq
+[Docker Engine]: https://docs.docker.com/engine/install/
 [Dig]: https://en.wikipedia.org/wiki/Dig_(command)
 [semantic versioning]: https://semver.org/
 [tschaffter/getdns-stubby]: https://github.com/tschaffter/getdns-stubby
