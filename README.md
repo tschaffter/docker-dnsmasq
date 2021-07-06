@@ -13,9 +13,6 @@ DNS (and optionally DHCP and TFTP) services to a small-scale network. It can
 also serve the names of local machines which are not in the global DNS.If you
 own an Asus router, it is possible that [your Asus router is using Dnsmasq].
 
-
-## Features
-
 This GitHub repository
 
 - Brings the latest release of Dnsmasq to any hosts that have Docker installed.
