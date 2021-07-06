@@ -16,14 +16,14 @@ own an Asus router, it is possible that [your Asus router is using Dnsmasq].
 
 ## Features
 
-This repository:
+This GitHub repository
 
-- Brings the latest release of Dnsmasq to any host that has Docker installed.
-- Closely tracks upstream source changes and promptly publishes new versions of
-  this image using an automated system (GitHub workflow).
+- Brings the latest release of Dnsmasq to any hosts that have Docker installed.
+- Tracks new release of Dnsmasq and promptly publishes new versions of this
+  Docker image using a GitHub workflow.
 - Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
-  Docker container (e.g. [tschaffter/getdns-stubby]), which is not (yet?)
-  supported natively by Dnsmasq.
+  Docker container using the option `--server <docker_server>` (e.g.
+  [tschaffter/getdns-stubby]), which is not supported natively by Dnsmasq.
 
 
 ## Specification
