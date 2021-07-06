@@ -17,6 +17,8 @@ jobs:
   configure:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+
     - name: Create configuration
       run: |
         DOCKER_IMAGE=${{ env.docker_repository }}
