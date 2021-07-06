@@ -162,7 +162,7 @@ The table below describes the image tags available.
 | `latest`                    | Yes    | Latest stable release.
 | `edge`                      | Yes    | Latest commit made to the default branch.
 | `edge-<sha>`                | No     | Same as above with the reference to the git commit.
-| `<major>.<minor>`           | No     | Stable release.
+| `<major>.<minor>`           | Yes    | Stable release.
 | `<major>.<minor>-<sha>`     | No     | Same as above with the reference to the git commit.
 
 You should avoid using a moving tag like `latest` when deploying containers in
