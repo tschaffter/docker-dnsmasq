@@ -1,6 +1,6 @@
 # Dnsmasq
 
-[![GitHub Release](https://img.shields.io/github/release/tschaffter/docker-dnsmasq/CI.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/releases)
+[![GitHub Release](https://img.shields.io/github/release/tschaffter/docker-dnsmasq.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/releases)
 [![GitHub CI](https://img.shields.io/github/workflow/status/tschaffter/docker-dnsmasq/CI.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/actions)
 [![GitHub License](https://img.shields.io/github/license/tschaffter/docker-dnsmasq.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/blob/main/LICENSE)
 [![Docker Pulls](https://img.shields.io/docker/pulls/tschaffter/dnsmasq.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/tschaffter/dnsmasq)
