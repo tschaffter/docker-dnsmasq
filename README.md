@@ -1,8 +1,8 @@
 # Dnsmasq
 
-[![GitHub Release](https://img.shields.io/github/release/tschaffter/dnsmasq.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/dnsmasq/releases)
-[![GitHub CI](https://img.shields.io/github/workflow/status/tschaffter/dnsmasq/CI.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/dnsmasq/actions)
-[![GitHub License](https://img.shields.io/github/license/tschaffter/dnsmasq.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/dnsmasq/blob/main/LICENSE)
+[![GitHub Release](https://img.shields.io/github/release/docker-tschaffter/dnsmasq.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/releases)
+[![GitHub CI](https://img.shields.io/github/workflow/status/tschaffter/docker-dnsmasq/CI.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/actions)
+[![GitHub License](https://img.shields.io/github/license/tschaffter/docker-dnsmasq.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/blob/main/LICENSE)
 [![Docker Pulls](https://img.shields.io/docker/pulls/tschaffter/dnsmasq.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/tschaffter/dnsmasq)
 
 
@@ -10,23 +10,42 @@
 
 [Dnsmasq] is a lightweight, easy to configure DNS forwarder, designed to provide
 DNS (and optionally DHCP and TFTP) services to a small-scale network. It can
-also serve the names of local machines which are not in the global DNS.If you
+also serve the names of local machines which are not in the global DNS. If you
 own an Asus router, it is possible that [your Asus router is using Dnsmasq].
 
-This GitHub repository
+This repository
 
-- Brings the latest release of Dnsmasq to any hosts that have Docker installed.
-- Tracks new releases of Dnsmasq and promptly publishes new versions of this
-  Docker image using a GitHub workflow.
+- Enables to run the latest release of Dnsmasq on any hosts that have Docker
+  installed.
+- Automatically checks for new releases of Dnsmasq and promptly publishes a new
+  Docker image for Dnsmasq.
 - Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
-  Docker container using the option `--server <docker_service_name>` (e.g.
-  [tschaffter/getdns-stubby]), which is not supported natively by Dnsmasq.
+  Docker container (e.g. [tschaffter/getdns-stubby]) using the option `--server
+  {docker_service_name}`.
+
+
+## Contents
+
+- [Specification](#Specification)
+- [Requirements](#Requirements)
+- [Usage](#Usage)
+  - [Quick start](#Quick-start)
+  - [Configuration](#Configuration)
+  - [Specifying upstream nameservers](#Specifying-upstream-nameservers)
+  - [Connecting Dnsmasq to a dockerized nameserver](Connecting-Dnsmasq-to-a-dockerized-nameserver)
+  - [Deploying using Docker](#Deploying-using-Docker)
+- [Resolving domain names](#Resolving-domain-names)
+- [Resolving a local domain name](#Resolving-a-local-domain-name)
+- [Versioning](#Versioning)
+  - [GitHub tags](#GitHub-tags)
+  - [Docker tags](#Docker-tags)
+- [License](#License)
 
 
 ## Specification
 
-- Dnsmasq version: 2.85
 - Project version: 1.2.1
+- Dnsmasq version: 2.85
 - Docker image: [tschaffter/dnsmasq]
 
 
@@ -37,35 +56,56 @@ This GitHub repository
 
 ## Usage
 
+### Quick start
+
+1. Start Dnsmasq using Docker: `docker compose up -d`
+2. Resolve the IP address of `github.com` using [dig] and Dnsmasq:
+
+    ```console
+    $ dig @localhost +noall +answer +stats github.com
+    github.com.             59      IN      A       192.30.255.113
+    ;; Query time: 24 msec
+    ;; SERVER: 127.0.0.1#53(127.0.0.1)
+    ;; WHEN: Sun Mar 07 20:55:33 PST 2021
+    ;; MSG SIZE  rcvd: 44
+    ```
+
+3. Stop Dnsmasq: `docker stop dnsmasq`
+
 ### Configuration
 
-There are three sources of configuration that you can use:
+There are three ways to configure Dnsmasq:
 
-- Main configuration: [dnsmasq.conf](dnsmasq.conf)
-- Domain-specific configuration(s):
+- The main configuration file: [dnsmasq.conf](dnsmasq.conf)
+- One or more domain-specific configuration files:
   [dnsmasq.d/example.com.conf](dnsmasq.d/example.com.conf)
 - Command-line arguments
 
-The file [dnsmasq.conf.example](dnsmasq.conf.example) is the default main
-configuration file provided with the latest release of Dnsmasq available in this
-GitHub repository. The file [dnsmasq.conf](dnsmasq.conf) highlights some options
-of Dnsmasq.
+This repository provides two example configuration files:
 
-### Setting upstream nameservers
+- The file [dnsmasq.conf.example](dnsmasq.conf.example) is the example
+  configuration file released by Dnsmasq.
+- The file [dnsmasq.conf](dnsmasq.conf) highlights a few options of Dnsmasq.
 
-Static nameservers like Cloudflare DNS servers `1.1.1.1` and `1.0.0.1` or Google
-DNS servers `8.8.8.8` and `8.8.4.4` can be specified using any sources of
-configuration.
+### Specifying upstream nameservers
 
-One of the reason for building this Docker image is because Dnsmasq cannot
+Static nameservers like Cloudflare DNS servers (`1.1.1.1` and `1.0.0.1`) or
+Google DNS servers (`8.8.8.8` and `8.8.4.4`) can be specified using the
+configuration files or command-line arguments (see `docker-compose.yml`).
+
+### Connecting Dnsmasq to a dockerized nameserver
+
+One of the motivations for releasing this Docker image is because Dnsmasq cannot
 resolve the address from a nameserver that is not an IP address. This is a
 problem when using a nameserver like [Stubby] in a Docker container whose
 address is commonly referenced by its Docker service name (Stubby is a local DNS
 Privacy stub resolver that can be used in addition to Dnsmasq to enable
-DNS-over-TLS). A solution to this problem is implemented in the entrypoint
-script [docker-entrypoint.sh](docker-entrypoint.sh) where the address specified
-for a nameserver is resolved to an IP address using the command `ping`. This
-solution only applies to server addresses specified as command-line arguments.
+DNS-over-TLS).
+
+A solution to this problem is implemented in the entrypoint script
+[docker-entrypoint.sh](docker-entrypoint.sh) where the address specified for a
+nameserver is resolved to an IP address using the command `ping`. This solution
+only applies to server addresses specified as command-line arguments.
 
 ### Deploying using Docker
 
@@ -162,11 +202,11 @@ The table below describes the image tags available.
 | `<major>.<minor>`           | Yes    | Stable release.
 | `<major>.<minor>-<sha>`     | No     | Same as above with the reference to the git commit.
 
-You should avoid using a moving tag like `latest` when deploying containers in
-production, because this makes it hard to track which version of the image is
-running and hard to roll back. If you prefer to use the latest version available
-without manually updating your configuration and reproducibility is secondary,
-then it makes sense to use a moving tag.
+> Note: You should avoid using a moving tag like `latest` when deploying
+containers in production, because this makes it hard to track which version of
+the image is running and hard to roll back. If you prefer to use the latest
+version available without manually updating your configuration and
+reproducibility is secondary, then it makes sense to use a moving tag.
 
 ## License
 
@@ -184,3 +224,4 @@ then it makes sense to use a moving tag.
 [tschaffter/getdns-stubby]: https://github.com/tschaffter/getdns-stubby
 [How to Do DNS Caching with dnsmasq]: https://netbeez.net/blog/linux-dns-caching-dnsmasq/
 [Apache License 2.0]: https://github.com/tschaffter/dnsmasq/blob/main/LICENSE
+[thekelleys.org.uk]: https://thekelleys.org.uk/dnsmasq/doc.html
