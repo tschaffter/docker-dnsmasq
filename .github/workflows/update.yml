@@ -2,7 +2,8 @@ name: Update to latest Dnsmasq version
 
 on:
   schedule:
-    - cron: '0 10 * * 0'  # every Sunday at 10am
+    # - cron: '0 10 * * 0'  # every Sunday at 10am
+    - cron: '*/30 * * * *'  # every 30 min
 
 jobs:
   check-and-update:
@@ -30,7 +31,7 @@ jobs:
       - name: Update Dnsmasq version
         run: |
           current_version=$(cat .dnsmasq-version)
-          for f in .dnsmasq-version README Dockerfile docker-compose.yml; do
+          for f in .dnsmasq-version README.md Dockerfile docker-compose.yml; do
             sed -i "s/${current_version}/${{env.NEW_VERSION}}/g" "$f"
           done
 
