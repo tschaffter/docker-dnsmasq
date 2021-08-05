@@ -7,14 +7,14 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: dnsmasq
-    networks:
-     - dns
-    ports:
-     - "53:53/udp"
     volumes:
       - ./dnsmasq.conf:/etc/dnsmasq.conf:ro
       - ./dnsmasq.d/example.com.conf:/etc/dnsmasq.d/example.com.conf:ro
     command: ["dnsmasq", "-k", "--server", "1.1.1.1", "--server", "1.0.0.1"]
+    networks:
+     - dns
+    ports:
+     - "53:53/udp"
 
 networks:
   dns:

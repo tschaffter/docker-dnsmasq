@@ -13,7 +13,7 @@ DNS (and optionally DHCP and TFTP) services to a small-scale network. It can
 also serve the names of local machines which are not in the global DNS. If you
 own an Asus router, it is possible that [your Asus router is using Dnsmasq].
 
-<img alt="Dnsmasq" src="./images/dnsmasq-icon.svg" height="100px">
+<img alt="Dnsmasq" src="https://raw.githubusercontent.com/tschaffter/docker-dnsmasq/main/images/dnsmasq-icon.svg" height="100px">
 
 This repository
 
@@ -46,7 +46,7 @@ This repository
 
 ## Specification
 
-- Project version: 1.2.1
+- Project version: 1.3.0
 - Dnsmasq version: 2.85
 - Docker image: [tschaffter/docker-dnsmasq]
 
