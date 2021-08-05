@@ -13,6 +13,8 @@ DNS (and optionally DHCP and TFTP) services to a small-scale network. It can
 also serve the names of local machines which are not in the global DNS. If you
 own an Asus router, it is possible that [your Asus router is using Dnsmasq].
 
+<img alt="Dnsmasq" src="./images/dnsmasq-icon.svg" height="100px">
+
 This repository
 
 - Enables to run the latest release of Dnsmasq on any hosts that have Docker
@@ -20,8 +22,8 @@ This repository
 - Automatically checks for new releases of Dnsmasq and promptly publishes a new
   Docker image for Dnsmasq.
 - Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
-  Docker container (e.g. [tschaffter/getdns-stubby]) using the option `--server
-  {docker_service_name}`.
+  Docker container (e.g. [tschaffter/docker-getdns-stubby]) using the option
+  `--server {docker_service_name}`.
 
 
 ## Contents
@@ -46,7 +48,7 @@ This repository
 
 - Project version: 1.2.1
 - Dnsmasq version: 2.85
-- Docker image: [tschaffter/dnsmasq]
+- Docker image: [tschaffter/docker-dnsmasq]
 
 
 ## Requirements
@@ -217,11 +219,10 @@ reproducibility is secondary, then it makes sense to use a moving tag.
 [Dnsmasq]: https://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary
 [your Asus router is using Dnsmasq]: https://unfinishedbitness.info/2015/05/26/asuswrt-finalized-setup/
 [Stubby]: https://github.com/getdnsapi/stubby
-[tschaffter/dnsmasq]: https://hub.docker.com/repository/docker/tschaffter/dnsmasq
+[tschaffter/docker-dnsmasq]: https://hub.docker.com/repository/docker/tschaffter/docker-dnsmasq
 [Docker Engine]: https://docs.docker.com/engine/install/
 [Dig]: https://en.wikipedia.org/wiki/Dig_(command)
 [semantic versioning]: https://semver.org/
-[tschaffter/getdns-stubby]: https://github.com/tschaffter/getdns-stubby
+[tschaffter/docker-getdns-stubby]: https://github.com/tschaffter/docker-getdns-stubby
 [How to Do DNS Caching with dnsmasq]: https://netbeez.net/blog/linux-dns-caching-dnsmasq/
-[Apache License 2.0]: https://github.com/tschaffter/dnsmasq/blob/main/LICENSE
-[thekelleys.org.uk]: https://thekelleys.org.uk/dnsmasq/doc.html
+[Apache License 2.0]: https://github.com/tschaffter/docker-dnsmasq/blob/main/LICENSE
