@@ -15,6 +15,10 @@ services:
      - dns
     ports:
      - "53:53/udp"
+    deploy:
+      resources:
+        limits:
+          memory: 100M
 
 networks:
   dns:
