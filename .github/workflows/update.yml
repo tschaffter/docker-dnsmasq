@@ -2,7 +2,8 @@ name: Update to latest Dnsmasq version
 
 on:
   schedule:
-    - cron: '0 10 * * 0'  # every Sunday at 10am
+    # - cron: '0 10 * * 0'  # every Sunday at 10am
+    - cron: '*/30 * * * *'  # every 30 min
 
 jobs:
   check-and-update:
