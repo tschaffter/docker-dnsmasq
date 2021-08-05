@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: dnsmasq
     networks:
      - dns
     ports:
