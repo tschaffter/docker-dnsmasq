@@ -11,7 +11,7 @@
 [Dnsmasq] is a lightweight, easy to configure DNS forwarder, designed to provide
 DNS (and optionally DHCP and TFTP) services to a small-scale network. It can
 also serve the names of local machines which are not in the global DNS. If you
-own an Asus router, it is possible that [your Asus router is using Dnsmasq].
+own an Asus router, it is possible that [your router is using Dnsmasq].
 
 <img alt="Dnsmasq" src="https://raw.githubusercontent.com/tschaffter/docker-dnsmasq/main/images/dnsmasq-icon.svg" height="100px">
 
@@ -217,7 +217,7 @@ reproducibility is secondary, then it makes sense to use a moving tag.
 <!-- Links -->
 
 [Dnsmasq]: https://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=summary
-[your Asus router is using Dnsmasq]: https://unfinishedbitness.info/2015/05/26/asuswrt-finalized-setup/
+[your router is using Dnsmasq]: https://unfinishedbitness.info/2015/05/26/asuswrt-finalized-setup/
 [Stubby]: https://github.com/getdnsapi/stubby
 [tschaffter/docker-dnsmasq]: https://hub.docker.com/repository/docker/tschaffter/docker-dnsmasq
 [Docker Engine]: https://docs.docker.com/engine/install/
