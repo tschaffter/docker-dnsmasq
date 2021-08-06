@@ -1,4 +1,4 @@
-# Dnsmasq
+# Dnsmasq Docker image
 
 [![GitHub Release](https://img.shields.io/github/release/tschaffter/docker-dnsmasq.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/releases)
 [![GitHub CI](https://img.shields.io/github/workflow/status/tschaffter/docker-dnsmasq/CI.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/actions)
@@ -31,7 +31,7 @@ This repository
 - [Specification](#Specification)
 - [Requirements](#Requirements)
 - [Usage](#Usage)
-  - [Quick start](#Quick-start)
+  - [Quickstart](#Quickstart)
   - [Configuration](#Configuration)
   - [Specifying upstream nameservers](#Specifying-upstream-nameservers)
   - [Connecting Dnsmasq to a dockerized nameserver](Connecting-Dnsmasq-to-a-dockerized-nameserver)
@@ -58,7 +58,7 @@ This repository
 
 ## Usage
 
-### Quick start
+### Quickstart
 
 1. Start Dnsmasq using Docker: `docker compose up -d`
 2. Resolve the IP address of `github.com` using [dig] and Dnsmasq:
