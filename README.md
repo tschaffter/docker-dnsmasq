@@ -17,11 +17,11 @@ own an Asus router, it is possible that [your router is using Dnsmasq].
 
 This repository
 
-- Enables to run the latest release of Dnsmasq on any hosts that have Docker
+- enables to run the latest release of Dnsmasq on any hosts that have Docker
   installed.
-- Automatically checks for new releases of Dnsmasq and promptly publishes a new
+- automatically checks for new releases of Dnsmasq and promptly publishes a new
   Docker image for Dnsmasq.
-- Enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
+- enables Dnsmasq to resolve the hostname of an upstream nameserver running in a
   Docker container (e.g. [tschaffter/docker-getdns-stubby]) using the option
   `--server {docker_service_name}`.
 
