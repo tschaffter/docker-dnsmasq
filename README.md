@@ -15,7 +15,7 @@ own an Asus router, it is possible that [your router is using Dnsmasq].
 
 <img alt="Dnsmasq" src="https://raw.githubusercontent.com/tschaffter/docker-dnsmasq/main/images/dnsmasq-icon.svg" height="100px">
 
-This repository
+This repository:
 
 - enables to run the latest release of Dnsmasq on any hosts that have Docker
   installed.
