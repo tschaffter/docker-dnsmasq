@@ -1,4 +1,4 @@
-# Dnsmasq Docker image
+# Docker image for Dnsmasq
 
 [![GitHub Release](https://img.shields.io/github/release/tschaffter/docker-dnsmasq.svg?include_prereleases&color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/releases)
 [![GitHub CI](https://img.shields.io/github/workflow/status/tschaffter/docker-dnsmasq/CI.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&logo=github)](https://github.com/tschaffter/docker-dnsmasq/actions)
