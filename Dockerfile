@@ -1,4 +1,4 @@
-FROM debian:10.10-slim as dnsmasq
+FROM debian:11.0-slim as dnsmasq
 
 ARG DNSMASQ_VERSION="2.85"
 ENV DNSMASQ_VERSION=${DNSMASQ_VERSION}
@@ -42,7 +42,7 @@ RUN gpg --keyserver keyring.debian.org --recv-keys E19135A2 \
     && git log -n 1 --pretty=format:%G? | grep "U" \
     && make install
 
-FROM debian:10.10-slim
+FROM debian:11.0-slim
 
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
 
