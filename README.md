@@ -47,7 +47,7 @@ This repository:
 ## Specification
 
 - Project version: 1.3.0
-- Dnsmasq version: 2.85
+- Dnsmasq version: 2.86
 - Docker image: [tschaffter/docker-dnsmasq]
 
 

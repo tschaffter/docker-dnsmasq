@@ -1,6 +1,6 @@
 FROM debian:10.10-slim as dnsmasq
 
-ARG DNSMASQ_VERSION="2.85"
+ARG DNSMASQ_VERSION="2.86"
 ENV DNSMASQ_VERSION=${DNSMASQ_VERSION}
 
 SHELL ["/bin/bash", "-euxo", "pipefail", "-c"]
