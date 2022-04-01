@@ -36,7 +36,7 @@ jobs:
           done
 
       - name: Send pull request to update to new version
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4.0.1
         with:
           commit-message: Update to Dnsmasq ${{ env.NEW_VERSION }}
           title: Update to Dnsmasq ${{ env.NEW_VERSION }}
