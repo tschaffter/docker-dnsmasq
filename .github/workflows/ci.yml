@@ -17,7 +17,7 @@ jobs:
   configure:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Create configuration
       run: |
@@ -63,7 +63,7 @@ jobs:
     needs: [configure]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Lint Dockerfiles
       uses: docker://hadolint/hadolint:latest
@@ -79,7 +79,7 @@ jobs:
     needs: [lint]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Download .github_env
       uses: actions/download-artifact@v2
