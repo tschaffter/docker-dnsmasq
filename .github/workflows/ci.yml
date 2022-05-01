@@ -54,7 +54,7 @@ jobs:
           "push=${PUSH}" | tee -a .github_env
 
     - name: Upload .github_env
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: GITHUB_ENV
         path: .github_env
